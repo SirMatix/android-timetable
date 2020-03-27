@@ -13,7 +13,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 public class DayAdapter extends FirestoreRecyclerAdapter<Day, DayAdapter.DayHolder> {
-    private OnItemClickListener listner;
+    private OnItemClickListener listener;
 
 
     public DayAdapter(@NonNull FirestoreRecyclerOptions<Day> options) {
@@ -56,21 +56,83 @@ public class DayAdapter extends FirestoreRecyclerAdapter<Day, DayAdapter.DayHold
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION && listner != null) {
-                        listner.onItemClick(getSnapshots().getSnapshot(position), position);
-                    }
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.onItemClick(getSnapshots().getSnapshot(position), position, "timeframe1");
 
+                    }
                 }
             });
+
+            timeframe1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.onItemClick(getSnapshots().getSnapshot(position), position, "timeframe1");
+
+                    }
+                }
+            });
+            timeframe2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.onItemClick(getSnapshots().getSnapshot(position), position, "timeframe2");
+
+                    }
+                }
+            });
+            timeframe3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.onItemClick(getSnapshots().getSnapshot(position), position, "timeframe3");
+
+                    }
+                }
+            });
+            timeframe4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.onItemClick(getSnapshots().getSnapshot(position), position, "timeframe4");
+
+                    }
+                }
+            });
+            timeframe5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.onItemClick(getSnapshots().getSnapshot(position), position, "timeframe5");
+
+                    }
+                }
+            });
+            timeframe6.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.onItemClick(getSnapshots().getSnapshot(position), position, "timeframe6");
+
+                    }
+                }
+            });
+
         }
     }
 
     public interface OnItemClickListener {
-        void onItemClick(DocumentSnapshot documentSnapshot, int position);
+        void onItemClick(DocumentSnapshot documentSnapshot, int position, String timeframe);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
-        this.listner = listner;
+        this.listener = listener;
     }
 
 
