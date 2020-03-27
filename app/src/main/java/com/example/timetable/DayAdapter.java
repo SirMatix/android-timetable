@@ -10,10 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-
-import org.w3c.dom.Text;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 public class DayAdapter extends FirestoreRecyclerAdapter<Day, DayAdapter.DayHolder> {
+    private OnItemClickListener listner;
+
 
     public DayAdapter(@NonNull FirestoreRecyclerOptions<Day> options) {
         super(options);
@@ -50,6 +51,28 @@ public class DayAdapter extends FirestoreRecyclerAdapter<Day, DayAdapter.DayHold
             timeframe4 = itemView.findViewById(R.id.timeframe4);
             timeframe5 = itemView.findViewById(R.id.timeframe5);
             timeframe6 = itemView.findViewById(R.id.timeframe6);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listner != null) {
+                        listner.onItemClick(getSnapshots().getSnapshot(position), position);
+                    }
+
+                }
+            });
         }
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(DocumentSnapshot documentSnapshot, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listner = listner;
+    }
+
+
+
 }

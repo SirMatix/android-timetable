@@ -9,10 +9,11 @@ import android.os.Bundle;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class Timetable extends AppCompatActivity {
+public class Timetable extends AppCompatActivity{
 
     private FirebaseFirestore fStore = FirebaseFirestore.getInstance();
     private CollectionReference dayRef = fStore.collection("Timetables");
@@ -46,6 +47,20 @@ public class Timetable extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new DayAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                Day day = documentSnapshot.toObject(Day.class);
+                /*
+                String timetableString = "Mobile App room: 501 teacher: Oluwasey Oginni";
+                int indexOfRoom= timetableString.indexOf("room:");
+                int indexOfTeacher = timetableString.indexOf("teacher");
+                int roomNumber = (int) timetableString.substring(indexOfRoom + 6, indexOfTeacher - 1);
+                 */
+            }
+        });
+
     }
 
     @Override
