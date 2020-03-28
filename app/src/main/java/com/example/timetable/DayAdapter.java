@@ -52,17 +52,6 @@ public class DayAdapter extends FirestoreRecyclerAdapter<Day, DayAdapter.DayHold
             timeframe5 = itemView.findViewById(R.id.timeframe5);
             timeframe6 = itemView.findViewById(R.id.timeframe6);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION && listener != null) {
-                        listener.onItemClick(getSnapshots().getSnapshot(position), position, "timeframe1");
-
-                    }
-                }
-            });
-
             timeframe1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
